@@ -17,11 +17,11 @@ QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
 	worker->moveToThread(m_thread);
 	m_thread->start();
 
-	Pix = QPixmap(400,300);
+	Pix = QPixmap(400, 300);
 	Pix.fill(Qt::white);
-	connect(ui.actionbreshen, SIGNAL(triggered()), worker, SLOT(drawImage()),Qt::QueuedConnection);
+	connect(ui.actionbreshen, SIGNAL(triggered()), worker, SLOT(drawImage()), Qt::QueuedConnection);
 	connect(ui.actionDDa, SIGNAL(triggered()), this, SLOT(paintbre()));
-	connect(worker, SIGNAL(outPix()), this, SLOT(draw_point()));
+	connect(worker, SIGNAL(outPix(int, int, QColor, int)), this, SLOT(draw_point(int, int, QColor, int)), Qt::QueuedConnection);
 	m_thread->start();
 }
 void QtWidgetsApplication1::paintEvent(QPaintEvent*) {
@@ -29,13 +29,14 @@ void QtWidgetsApplication1::paintEvent(QPaintEvent*) {
 	//QPainter Painter(this);
 	Painter.drawPixmap(0, 0, 400, 300, Pix);
 }
-void QtWidgetsApplication1::draw_point(int const x, int const y, QColor const c, int const w) {
+void QtWidgetsApplication1::draw_point(int  x, int  y, QColor  c, int  w) {
 	qDebug() << x << y << '\n';
 	QPainter Painter(&Pix);
 	Painter.setPen(QPen(c, w));
 	Painter.translate(150, 100);
 	Painter.scale(1, -1);
 	Painter.drawPoint(x, y);
+	this->update();
 }
 
 void QtWidgetsApplication1::paintbre() {
@@ -63,7 +64,13 @@ void QtWidgetsApplication1::paintbre() {
 	this->update();
 }
 
-void QtWidgetsApplication1::slot1() {
-	QWidget* new_w = new QWidget();
-	new_w->show();
+//void QtWidgetsApplication1::slot1() {
+//	//QWidget* new_w = new QWidget();
+//	//new_w->show();
+//	qDebug() << "test" << '\n';
+//}
+void QtWidgetsApplication1::slot1(int x, int y) {
+	//QWidget* new_w = new QWidget();
+	//new_w->show();
+	qDebug() << "test" << '\n';
 }

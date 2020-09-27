@@ -16,11 +16,12 @@ class QtWidgetsApplication1 : public QMainWindow
 public:
 	QtWidgetsApplication1(QWidget* parent = Q_NULLPTR);
 	void paintEvent(QPaintEvent*);
-	void draw_point(int const x, int const y, QColor const c, int const w);
 
 public slots:
 	void paintbre();
-	void slot1();
+	//void slot1();
+	void slot1(int x, int y);
+	void draw_point(int x, int y, QColor c, int w);
 private:
 	Ui::QtWidgetsApplication1Class ui;
 	QPixmap Pix;
