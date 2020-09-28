@@ -17,12 +17,14 @@ QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
 	worker->moveToThread(m_thread);
 	m_thread->start();
 	// 初始化
-	Pix = QPixmap(400, 300);
+	Pix = QPixmap(600, 600);
 	Pix.fill(Qt::white);
 	// 请求画图
 	connect(ui.actionbreshen, SIGNAL(triggered()), worker, SLOT(bresenham()));
 	connect(ui.actionDDa, SIGNAL(triggered()), worker, SLOT(dda()));
-	connect(ui.actionoval, SIGNAL(triggered()), worker, SLOT(oval()));
+	connect(ui.actionoval, SIGNAL(triggered()), worker, SLOT(oval())); 
+	connect(ui.actioncircle, SIGNAL(triggered()), worker, SLOT(circle()));
+
 	// 接收画点信号
 	connect(worker, SIGNAL(outPix(int, int, QColor, int)), this, SLOT(draw_point(int, int, QColor, int)), Qt::QueuedConnection);
 	// 开始线程
@@ -30,10 +32,10 @@ QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
 }
 void QtWidgetsApplication1::paintEvent(QPaintEvent*) {
 	QPainter Painter(this);
-	Painter.drawPixmap(0, 0, 400, 300, Pix);
+	Painter.drawPixmap(0, 0, 600, 600, Pix);
 }
 void QtWidgetsApplication1::draw_point(int  x, int  y, QColor  c, int  w) {
-	qDebug() << x << y << '\n';
+	//qDebug() << x << y << '\n';
 	QPainter Painter(&Pix);
 	Painter.setPen(QPen(c, w));
 	Painter.translate(200, 200);

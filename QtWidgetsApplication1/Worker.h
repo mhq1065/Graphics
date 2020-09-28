@@ -13,5 +13,6 @@ public slots:
 	void dda();
 	void bresenham();
 	void oval();
+	void circle();
 };
 

@@ -16,6 +16,7 @@ class QtWidgetsApplication1 : public QMainWindow
 public:
 	QtWidgetsApplication1(QWidget* parent = Q_NULLPTR);
 	void paintEvent(QPaintEvent*);
+	bool eventFilter(QObject* watched, QEvent* event);
 
 public slots:
 	void draw_point(int x, int y, QColor c, int w);
