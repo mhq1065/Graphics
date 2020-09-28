@@ -10,6 +10,8 @@ public:
 signals:
 	void outPix(int, int, QColor, int);
 public slots:
-	void drawImage();
+	void dda();
+	void bresenham();
+	void oval();
 };
 

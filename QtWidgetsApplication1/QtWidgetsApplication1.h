@@ -18,9 +18,6 @@ public:
 	void paintEvent(QPaintEvent*);
 
 public slots:
-	void paintbre();
-	//void slot1();
-	void slot1(int x, int y);
 	void draw_point(int x, int y, QColor c, int w);
 private:
 	Ui::QtWidgetsApplication1Class ui;
