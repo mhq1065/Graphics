@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>400</height>
+    <width>666</width>
+    <height>401</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -20,15 +20,346 @@
    <string>QtWidgetsApplication1</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="canvas" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>30</y>
-      <width>371</width>
-      <height>321</height>
+      <x>280</x>
+      <y>10</y>
+      <width>500</width>
+      <height>400</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>281</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="dda">
+     <attribute name="title">
+      <string>dda</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>191</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0">
+        <widget class="QLabel" name="dda_label_p1_x">
+         <property name="text">
+          <string>x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="dda_label_p2_x">
+         <property name="text">
+          <string>x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="dda_label_p1_y">
+         <property name="text">
+          <string>y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="dda_p1_x"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="dda_label_p2_y">
+         <property name="text">
+          <string>y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="dda_p1_y"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="dda_p2_x"/>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLineEdit" name="dda_p2_y"/>
+       </item>
+       <item row="2" column="0" colspan="4">
+        <widget class="QLabel" name="dda_label_p2">
+         <property name="text">
+          <string>点2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="4">
+        <widget class="QLabel" name="dda_label_p1">
+         <property name="text">
+          <string>点1</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="print_dda">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>170</y>
+        <width>56</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>绘制</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="bresenham">
+     <attribute name="title">
+      <string>直线bresenham</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>20</y>
+        <width>191</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="1" column="0">
+        <widget class="QLabel" name="bresenham_label_p1_x">
+         <property name="text">
+          <string>x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="bresenham_label_p2_x">
+         <property name="text">
+          <string>x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="bresenham_label_p1_y">
+         <property name="text">
+          <string>y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="bresenham_p1_x"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="bresenham_label_p2_y">
+         <property name="text">
+          <string>y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="bresenham_p1_y"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="bresenham_p2_x"/>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLineEdit" name="bresenham_p2_y"/>
+       </item>
+       <item row="2" column="0" colspan="4">
+        <widget class="QLabel" name="bresenham_label_p1_2">
+         <property name="text">
+          <string>点2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="4">
+        <widget class="QLabel" name="bresenham_label_p1">
+         <property name="text">
+          <string>点1</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="print_bresenham">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>180</y>
+        <width>56</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>绘制</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="circle">
+     <attribute name="title">
+      <string>圆</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>191</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="circle_center">
+         <property name="text">
+          <string>圆心</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="circle_radias">
+         <property name="text">
+          <string>半径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="circle_lable_x">
+         <property name="text">
+          <string>x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="4">
+        <widget class="QLineEdit" name="circle_r"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="circle_x"/>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLineEdit" name="circle_y"/>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="circle_lable_y">
+         <property name="text">
+          <string>y</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="paint_circle">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>210</y>
+        <width>56</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>绘制</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="oval">
+     <attribute name="title">
+      <string>椭圆</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>33</x>
+        <y>20</y>
+        <width>211</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="oval_center">
+         <property name="text">
+          <string>圆心</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="oval_label_x">
+         <property name="text">
+          <string>x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="oval_label_r_y">
+         <property name="text">
+          <string>r_y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="oval_x"/>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="oval_label_y">
+         <property name="text">
+          <string>y</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="oval_label_r_x">
+         <property name="text">
+          <string>r_x</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLineEdit" name="oval_y"/>
+       </item>
+       <item row="1" column="1" colspan="4">
+        <widget class="QLineEdit" name="oval_r_x"/>
+       </item>
+       <item row="2" column="1" colspan="4">
+        <widget class="QLineEdit" name="oval_r_y"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="print_oval">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>150</y>
+        <width>56</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>绘制</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -36,26 +367,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>666</width>
      <height>18</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>直线</string>
-    </property>
-    <addaction name="actionDDa"/>
-    <addaction name="actionbreshen"/>
-   </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>圆</string>
-    </property>
-    <addaction name="actionoval"/>
-    <addaction name="actioncircle"/>
-   </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -66,34 +381,90 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionDDa">
-   <property name="text">
-    <string>DDa</string>
-   </property>
-  </action>
-  <action name="actionbreshen">
-   <property name="text">
-    <string>bresenham</string>
-   </property>
-  </action>
-  <action name="actionoval">
-   <property name="text">
-    <string>oval</string>
-   </property>
-  </action>
-  <action name="actioncircle">
-   <property name="text">
-    <string>circle</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>canvas</class>
+   <extends>QWidget</extends>
+   <header>canvas.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="QtWidgetsApplication1.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>paint_circle</sender>
+   <signal>clicked()</signal>
+   <receiver>QtWidgetsApplication1Class</receiver>
+   <slot>CircleController()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>284</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>57</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>print_oval</sender>
+   <signal>clicked()</signal>
+   <receiver>QtWidgetsApplication1Class</receiver>
+   <slot>OvalController()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>363</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>print_dda</sender>
+   <signal>clicked()</signal>
+   <receiver>QtWidgetsApplication1Class</receiver>
+   <slot>DdaController()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>104</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>print_bresenham</sender>
+   <signal>clicked()</signal>
+   <receiver>QtWidgetsApplication1Class</receiver>
+   <slot>BresenhamController()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>98</x>
+     <y>244</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>118</x>
+     <y>369</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
-  <slot>paintbre()</slot>
   <slot>slot1()</slot>
+  <slot>CircleController()</slot>
+  <slot>OvalController()</slot>
+  <slot>DdaController()</slot>
+  <slot>BresenhamController()</slot>
  </slots>
 </ui>

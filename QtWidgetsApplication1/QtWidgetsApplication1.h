@@ -16,10 +16,24 @@ class QtWidgetsApplication1 : public QMainWindow
 public:
 	QtWidgetsApplication1(QWidget* parent = Q_NULLPTR);
 	void paintEvent(QPaintEvent*);
-	bool eventFilter(QObject* watched, QEvent* event);
+	//bool eventFilter(QObject* watched, QEvent* event);
+
 
 public slots:
-	void draw_point(int x, int y, QColor c, int w);
+	void slot1();
+	void CircleController();
+	void OvalController();
+	void DdaController();
+	void BresenhamController();
+signals:
+	void Circle_signal(int x, int y, int r);
+signals:
+	void Oval_signal(int x, int y, int rx, int ry);
+signals:
+	void Bresenham_signal(int, int, int, int);
+signals:
+	void Dda_signal(int, int, int, int);
+
 private:
 	Ui::QtWidgetsApplication1Class ui;
 	QPixmap Pix;

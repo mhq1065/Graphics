@@ -1,5 +1,5 @@
 #include "QtWidgetsApplication1.h"
-
+#include "canvas.h"
 #include <Qpainter>
 #include <QPixmap>
 #include <QDebug>
@@ -16,30 +16,59 @@ QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
 	m_thread = new QThread;
 	worker->moveToThread(m_thread);
 	m_thread->start();
-	// 初始化
-	Pix = QPixmap(600, 600);
-	Pix.fill(Qt::white);
 	// 请求画图
-	connect(ui.actionbreshen, SIGNAL(triggered()), worker, SLOT(bresenham()));
-	connect(ui.actionDDa, SIGNAL(triggered()), worker, SLOT(dda()));
-	connect(ui.actionoval, SIGNAL(triggered()), worker, SLOT(oval())); 
-	connect(ui.actioncircle, SIGNAL(triggered()), worker, SLOT(circle()));
-
+	connect(this, SIGNAL(Circle_signal(int, int, int)), worker, SLOT(circle(int, int, int)));
+	connect(this, SIGNAL(Oval_signal(int, int, int, int)), worker, SLOT(oval(int, int, int, int)));
+	connect(this, SIGNAL(Dda_signal(int, int, int, int)), worker, SLOT(dda(int, int, int, int)));
+	connect(this, SIGNAL(Bresenham_signal(int, int, int, int)), worker, SLOT(bresenham(int, int, int, int)));
 	// 接收画点信号
-	connect(worker, SIGNAL(outPix(int, int, QColor, int)), this, SLOT(draw_point(int, int, QColor, int)), Qt::QueuedConnection);
+	connect(worker, SIGNAL(outPix(int, int, QColor, int)), ui.widget, SLOT(draw_point(int, int, QColor, int)));
 	// 开始线程
 	m_thread->start();
 }
 void QtWidgetsApplication1::paintEvent(QPaintEvent*) {
 	QPainter Painter(this);
-	Painter.drawPixmap(0, 0, 600, 600, Pix);
+	Painter.drawPixmap(0, 20, 700, 720, Pix);
 }
-void QtWidgetsApplication1::draw_point(int  x, int  y, QColor  c, int  w) {
-	//qDebug() << x << y << '\n';
-	QPainter Painter(&Pix);
-	Painter.setPen(QPen(c, w));
-	Painter.translate(200, 200);
-	Painter.scale(1, -1);
-	Painter.drawPoint(x, y);
-	this->update();
+
+void QtWidgetsApplication1::slot1()
+{
+	qDebug() << "hello" << '\n';
+}
+
+void QtWidgetsApplication1::CircleController()
+{
+	int x = ui.circle_x->text().toInt();
+	int y = ui.circle_y->text().toInt();
+	int r = ui.circle_r->text().toInt();
+	qDebug() << x << y << r << '\n';
+	emit Circle_signal(x, y, r);
+}
+
+void QtWidgetsApplication1::OvalController()
+{
+	int x = ui.oval_x->text().toInt();
+	int y = ui.oval_y->text().toInt();
+	int rx = ui.oval_r_x->text().toInt();
+	int ry = ui.oval_r_y->text().toInt();
+	qDebug() << x << y << rx << ry << '\n';
+	emit Oval_signal(x, y, rx, ry);
+}
+
+void QtWidgetsApplication1::DdaController()
+{
+	int p1_x = ui.dda_p1_x->text().toInt();
+	int p1_y = ui.dda_p1_y->text().toInt();
+	int p2_x = ui.dda_p2_x->text().toInt();
+	int p2_y = ui.dda_p2_y->text().toInt();
+	emit Dda_signal(p1_x, p1_y, p2_x, p2_y);
+}
+
+void QtWidgetsApplication1::BresenhamController()
+{
+	int p1_x = ui.bresenham_p1_x->text().toInt();
+	int p1_y = ui.bresenham_p1_y->text().toInt();
+	int p2_x = ui.bresenham_p2_x->text().toInt();
+	int p2_y = ui.bresenham_p2_y->text().toInt();
+	emit Bresenham_signal(p1_x, p1_y, p2_x, p2_y);
 }

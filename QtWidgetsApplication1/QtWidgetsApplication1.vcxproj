@@ -86,6 +86,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="canvas.cpp" />
     <ClCompile Include="Worker.cpp" />
     <QtRcc Include="QtWidgetsApplication1.qrc" />
     <QtUic Include="QtWidgetsApplication1.ui" />
@@ -98,6 +99,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Worker.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="canvas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
