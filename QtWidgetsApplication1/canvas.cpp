@@ -7,16 +7,16 @@ canvas::canvas(QWidget* parent) :QWidget(parent)
 {
 	qDebug() << "init canvas" << '\n';
 	// 设置中心位置
-	center_x = 250;
-	center_y = 200;
-	Pix = QPixmap(600, 600);
+	center_x = 600;
+	center_y = 360;
+	Pix = QPixmap(center_x * 2, center_y * 2);
 	Pix.fill(Qt::white);
 }
 
 void canvas::paintEvent(QPaintEvent*)
 {
 	QPainter Painter(this);
-	Painter.drawPixmap(0, 0, 600, 600, Pix);
+	Painter.drawPixmap(0, 0, center_x * 2, center_y * 2, Pix);
 }
 
 void canvas::draw_point(int x, int y, QColor c, int w)

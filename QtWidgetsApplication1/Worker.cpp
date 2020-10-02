@@ -5,6 +5,7 @@
 #include <Qpainter>
 
 #include <cmath>
+using namespace std;
 
 int Rounding(const float a) { return int(a + 0.5); }
 Worker::Worker(QObject* parent)
@@ -17,8 +18,8 @@ void Worker::dda(int p1_x, int p1_y, int p2_x, int p2_y)
 {
 	qDebug() << "dda" << '\n';
 
-	int delta_x = abs(p1_x - p1_y);
-	int delta_y = abs(p2_x - p2_y);
+	int delta_x = abs(p1_x - p2_x);
+	int delta_y = abs(p1_x - p2_y);
 	int i = 0;
 	float length = delta_x >= delta_y ? delta_x : delta_y;
 	float dx = (p2_x - p1_x) / length;
@@ -27,7 +28,7 @@ void Worker::dda(int p1_x, int p1_y, int p2_x, int p2_y)
 	float y = p1_y;
 	while (i <= length) {
 		QThread::msleep(t);
-		emit outPix(int(x + .5), int(y + .5), Qt::red, 1);
+		emit outPix(int(x + .5), int(y + .5), Qt::red, 1);\
 		y += dy;
 		x += dx;
 		i++;

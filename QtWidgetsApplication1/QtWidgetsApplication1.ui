@@ -17,16 +17,16 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>QtWidgetsApplication1</string>
+   <string>计算机图形学</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="canvas" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>10</y>
-      <width>500</width>
-      <height>400</height>
+      <x>290</x>
+      <y>20</y>
+      <width>720</width>
+      <height>640</height>
      </rect>
     </property>
     <property name="cursor">
@@ -43,7 +43,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="dda">
      <attribute name="title">
@@ -81,7 +81,11 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="dda_p1_x"/>
+        <widget class="QLineEdit" name="dda_p1_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="2">
         <widget class="QLabel" name="dda_label_p2_y">
@@ -91,13 +95,25 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="dda_p1_y"/>
+        <widget class="QLineEdit" name="dda_p1_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="dda_p2_x"/>
+        <widget class="QLineEdit" name="dda_p2_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QLineEdit" name="dda_p2_y"/>
+        <widget class="QLineEdit" name="dda_p2_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0" colspan="4">
         <widget class="QLabel" name="dda_label_p2">
@@ -165,7 +181,11 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="bresenham_p1_x"/>
+        <widget class="QLineEdit" name="bresenham_p1_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="2">
         <widget class="QLabel" name="bresenham_label_p2_y">
@@ -175,13 +195,25 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="bresenham_p1_y"/>
+        <widget class="QLineEdit" name="bresenham_p1_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="bresenham_p2_x"/>
+        <widget class="QLineEdit" name="bresenham_p2_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QLineEdit" name="bresenham_p2_y"/>
+        <widget class="QLineEdit" name="bresenham_p2_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0" colspan="4">
         <widget class="QLabel" name="bresenham_label_p1_2">
@@ -249,13 +281,25 @@
         </widget>
        </item>
        <item row="1" column="1" colspan="4">
-        <widget class="QLineEdit" name="circle_r"/>
+        <widget class="QLineEdit" name="circle_r">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QLineEdit" name="circle_x"/>
+        <widget class="QLineEdit" name="circle_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QLineEdit" name="circle_y"/>
+        <widget class="QLineEdit" name="circle_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="3">
         <widget class="QLabel" name="circle_lable_y">
@@ -319,7 +363,11 @@
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QLineEdit" name="oval_x"/>
+        <widget class="QLineEdit" name="oval_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="3">
         <widget class="QLabel" name="oval_label_y">
@@ -336,13 +384,25 @@
         </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QLineEdit" name="oval_y"/>
+        <widget class="QLineEdit" name="oval_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="1" column="1" colspan="4">
-        <widget class="QLineEdit" name="oval_r_x"/>
+        <widget class="QLineEdit" name="oval_r_x">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1" colspan="4">
-        <widget class="QLineEdit" name="oval_r_y"/>
+        <widget class="QLineEdit" name="oval_r_y">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -371,14 +431,6 @@
      <height>18</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
