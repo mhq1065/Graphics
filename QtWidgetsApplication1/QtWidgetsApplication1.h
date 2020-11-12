@@ -7,7 +7,9 @@
 #include <Qpainter>
 #include <qtimer.h>
 
+#include <QMessageBox>
 #include <QThread>
+#include <QString>
 
 class QtWidgetsApplication1 : public QMainWindow
 {
@@ -25,6 +27,8 @@ public slots:
 	void OvalController();
 	void DdaController();
 	void BresenhamController();
+	void showMsg();
+	void showListMsg(int,int);
 signals:
 	void Circle_signal(int x, int y, int r);
 signals:
@@ -38,7 +42,12 @@ private:
 	Ui::QtWidgetsApplication1Class ui;
 	QPixmap Pix;
 	//QTimer* timer;
-
+	QMessageBox msgBox{ QString::fromLocal8Bit("¾¯¸æ"),
+		QString::fromLocal8Bit("TanÇúÏß"),
+		QMessageBox::Critical,
+		QMessageBox::Ok | QMessageBox::Default,
+		QMessageBox::Cancel | QMessageBox::Escape,
+		0 };
 	QThread* m_thread;
 	Worker* worker;
 };

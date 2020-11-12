@@ -11,6 +11,9 @@ public:
 public slots:
 	void draw_point(int x, int y, QColor c, int w);
 
+	void draw_coordinate();
+signals:
+	void outListMsg(int,int);
 protected:
 	void paintEvent(QPaintEvent*)override;
 

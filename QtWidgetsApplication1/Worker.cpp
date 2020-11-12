@@ -3,14 +3,16 @@
 #include <QThread>
 #include <QDebug>
 #include <Qpainter>
-
+#include <QMessageBox>
 #include <cmath>
 using namespace std;
 
 int Rounding(const float a) { return int(a + 0.5); }
-Worker::Worker(QObject* parent)
+Worker::Worker(int width, int height, QObject* parent)
 {
-	t = 50;
+	this->width = width;
+	this->height = height;
+	this->t = 50;
 	qDebug() << "init Worker progress" << '\n';
 }
 
@@ -28,7 +30,11 @@ void Worker::dda(int p1_x, int p1_y, int p2_x, int p2_y)
 	float y = p1_y;
 	while (i <= length) {
 		QThread::msleep(t);
-		emit outPix(int(x + .5), int(y + .5), Qt::red, 1);\
+		if (isOut(int(x + .5), int(y + .5))) {
+			emit outMsg();
+			break;
+		}
+		emit outPix(int(x + .5), int(y + .5), Qt::red, 1);
 		y += dy;
 		x += dx;
 		i++;
@@ -45,6 +51,11 @@ void Worker::bresenham(int p1_x, int p1_y, int p2_x, int p2_y)
 	int p = (dx > dy ? dx : -dy) / 2, e2;
 	for (;;) {
 		QThread::msleep(t);
+		if (isOut(x0, y0)) {
+			emit outMsg();
+			break;
+		}
+		qDebug() << x0 << 't' << y0 << '\n';
 		emit outPix(x0, y0, Qt::red, 1);
 		if (x0 == x1 && y0 == y1) {
 			break;
@@ -65,7 +76,8 @@ void Worker::oval(int x0, int y0, int rx, int ry)
 {
 	// 中心椭圆
 	qDebug() << "oval" << '\n';
-
+	// 绘制圆心
+	emit outPix(x0, y0, Qt::black, 1);
 	int a = rx, b = ry;
 	int x, y;
 	float d1, d2;
@@ -74,6 +86,15 @@ void Worker::oval(int x0, int y0, int rx, int ry)
 	d1 = b * b + (double)a * a * (-b + 0.25);
 	while ((double)b * b * (double(x) + 1) < (double)a * a * (y - 0.5)) {
 		//qDebug() << x << y << endl;
+
+		// 判断越界
+		if (isOut(x + x0, y + y0) ||
+			isOut(-x + x0, y + y0) ||
+			isOut(-x + x0, y + y0) ||
+			isOut(-x + x0, y + y0)) {
+			emit outMsg();
+			break;
+		}
 		emit outPix(x + x0, y + y0, Qt::red, 1);
 		emit outPix(-x + x0, y + y0, Qt::red, 1);
 		emit outPix(x + x0, -y + y0, Qt::red, 1);
@@ -93,6 +114,14 @@ void Worker::oval(int x0, int y0, int rx, int ry)
 	d2 = pow(b * (x + 0.5), 2) + pow(a * (y - 1), 2) - pow(a * b, 2);
 	while (y >= 0) {
 		//qDebug() << x << y << endl;
+		// 判断越界
+		if (isOut(x + x0, y + y0) ||
+			isOut(-x + x0, y + y0) ||
+			isOut(-x + x0, y + y0) ||
+			isOut(-x + x0, y + y0)) {
+			emit outMsg();
+			break;
+		}
 		emit outPix(x + x0, y + y0, Qt::red, 1);
 		emit outPix(-x + x0, y + y0, Qt::red, 1);
 		emit outPix(x + x0, -y + y0, Qt::red, 1);
@@ -116,10 +145,25 @@ void Worker::circle(int x, int y, int r)
 	// bresenham circle
 	qDebug() << "circle" << '\n';
 
+	// 绘制圆心
+	emit outPix(x, y, Qt::black, 1);
+
 	int x0 = x, y0 = y;
 	x = 0, y = r;
 	int d = 1 - r;
 	while (y >= x) {
+		qDebug() << x << '\t' << y << '\t' << d << '\n';
+		if (isOut(x0 + x, y + y0) ||
+			isOut(x0 + y, x + y0) ||
+			isOut(x0 - x, y + y0) ||
+			isOut(x0 + y, -x + y0) ||
+			isOut(x0 + x, -y + y0) ||
+			isOut(x0 - y, +x + y0) ||
+			isOut(x0 - x, -y + y0) ||
+			isOut(x0 - y, -x + y0)) {
+			emit outMsg();
+			break;
+		}
 		emit outPix(x0 + x, y + y0, Qt::red, 1);
 		emit outPix(x0 + y, x + y0, Qt::red, 1);
 		emit outPix(x0 - x, y + y0, Qt::red, 1);
@@ -139,4 +183,16 @@ void Worker::circle(int x, int y, int r)
 		}
 		x++;
 	}
+}
+
+bool Worker::isOut(int x, int y)
+{
+	if (x < -width / 2 ||
+		x > width / 2 ||
+		y > height / 2 ||
+		y < -height)
+	{
+		return true;
+	}
+	return false;
 }

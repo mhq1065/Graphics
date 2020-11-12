@@ -41,21 +41,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Worker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="canvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Worker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="Worker.h">
+    <QtMoc Include="canvas.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="canvas.h">
+    <QtMoc Include="Worker.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

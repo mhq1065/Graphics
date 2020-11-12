@@ -6,9 +6,11 @@ class Worker :public QObject
 {
 	Q_OBJECT
 public:
-	explicit Worker(QObject* parent = 0);
+	explicit Worker(int,int,QObject* parent = 0);
 signals:
 	void outPix(int, int, QColor, int);
+signals:
+	void outMsg();
 public slots:
 	void dda(int,int,int,int);
 	void bresenham(int,int,int,int);
@@ -17,5 +19,8 @@ public slots:
 
 private:
 	unsigned int t;
+	int height;
+	int width;
+	bool isOut(int,int);
 };
 

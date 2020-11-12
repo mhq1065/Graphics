@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>666</width>
-    <height>401</height>
+    <width>1453</width>
+    <height>810</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -23,11 +23,17 @@
    <widget class="canvas" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>230</x>
       <y>20</y>
-      <width>720</width>
-      <height>640</height>
+      <width>481</width>
+      <height>561</height>
      </rect>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>1000</width>
+      <height>800</height>
+     </size>
     </property>
     <property name="cursor">
      <cursorShape>ArrowCursor</cursorShape>
@@ -36,14 +42,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>281</width>
-      <height>341</height>
+      <x>10</x>
+      <y>10</y>
+      <width>211</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="dda">
      <attribute name="title">
@@ -52,10 +58,10 @@
      <widget class="QWidget" name="gridLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>191</width>
-        <height>131</height>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>91</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -134,8 +140,8 @@
      <widget class="QPushButton" name="print_dda">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>170</y>
+        <x>70</x>
+        <y>120</y>
         <width>56</width>
         <height>31</height>
        </rect>
@@ -152,10 +158,10 @@
      <widget class="QWidget" name="gridLayoutWidget_4">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>20</y>
-        <width>191</width>
-        <height>131</height>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>91</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
@@ -234,8 +240,8 @@
      <widget class="QPushButton" name="print_bresenham">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>180</y>
+        <x>70</x>
+        <y>120</y>
         <width>56</width>
         <height>31</height>
        </rect>
@@ -252,10 +258,10 @@
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>191</width>
-        <height>131</height>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>91</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -316,8 +322,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>210</y>
+        <x>70</x>
+        <y>120</y>
         <width>56</width>
         <height>31</height>
        </rect>
@@ -334,9 +340,9 @@
      <widget class="QWidget" name="gridLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>33</x>
-        <y>20</y>
-        <width>211</width>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
         <height>91</height>
        </rect>
       </property>
@@ -410,7 +416,7 @@
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>150</y>
+        <y>120</y>
         <width>56</width>
         <height>31</height>
        </rect>
@@ -421,18 +427,27 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QListWidget" name="MsgList">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>260</y>
+      <width>211</width>
+      <height>221</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>666</width>
+     <width>1453</width>
      <height>18</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

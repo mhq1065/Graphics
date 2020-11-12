@@ -5,14 +5,18 @@
 #include <QDebug>
 #include <QThread>
 #include <Qtimer>
+#include <QColorDialog>
+#include <QMessageBox>
+#include <QString>
 
 // https://blog.csdn.net/sigmarising/article/details/79920380
 QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
 	: QMainWindow(parent)
 {
+	int height = 400, width = 600;
 	ui.setupUi(this);
 	// 新建线程处理画图以及延时
-	worker = new Worker;
+	worker = new Worker(width, height);
 	m_thread = new QThread;
 	worker->moveToThread(m_thread);
 	m_thread->start();
@@ -23,8 +27,14 @@ QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
 	connect(this, SIGNAL(Bresenham_signal(int, int, int, int)), worker, SLOT(bresenham(int, int, int, int)));
 	// 接收画点信号
 	connect(worker, SIGNAL(outPix(int, int, QColor, int)), ui.widget, SLOT(draw_point(int, int, QColor, int)));
+	// 接受越界信号
+	connect(worker, SIGNAL(outMsg()), this, SLOT(showMsg()));
+	// 接受item信号
+	connect(ui.widget, SIGNAL(outListMsg(int, int)), this, SLOT(showListMsg(int, int)));
 	// 开始线程
 	m_thread->start();
+	// 强制规定画框大小
+	ui.widget->resize(QSize(width, height));
 }
 void QtWidgetsApplication1::paintEvent(QPaintEvent*) {
 	QPainter Painter(this);
@@ -71,4 +81,19 @@ void QtWidgetsApplication1::BresenhamController()
 	int p2_x = ui.bresenham_p2_x->text().toInt();
 	int p2_y = ui.bresenham_p2_y->text().toInt();
 	emit Bresenham_signal(p1_x, p1_y, p2_x, p2_y);
+}
+
+void QtWidgetsApplication1::showMsg()
+{
+	msgBox.show();
+}
+
+void QtWidgetsApplication1::showListMsg(int x, int y)
+{
+	QListWidgetItem* item = new QListWidgetItem;
+	QString str = tr(",");
+	str = "(" + QString::number(x) + "," + QString::number(y) + ")";
+
+	item->setText(str);
+	ui.MsgList->addItem(item);
 }
